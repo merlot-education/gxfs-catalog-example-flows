@@ -8,6 +8,16 @@ from icecream import ic
 import json
 import os
 
+sd_wizard_api_base = "http://localhost:8085"
+catalog_api_base = "http://localhost:8081"
+oauth_url = "http://key-server:8080/realms/gaia-x/protocol/openid-connect/token"
+
+def checkResponse(response, valid_response_code=200):
+    ic(response.status_code)
+    if response.status_code != valid_response_code:
+        ic(json.loads(response.text))
+        exit()
+
 def resolveSchema(schema, all_schemas):
     # initialize a dict for our current entry and set the type field according to the schema
     entry = {}
@@ -37,17 +47,17 @@ def get_access_token(url, client_id, client_secret, user, password):
         'username': user,
         'password': password
     })
-    ic(response.status_code)
-    return response.json()["access_token"]
+    return response
 
 
 ic("Get available Shapes")
-response = requests.get("http://localhost:8085/getAvailableShapesCategorized?ecoSystem=gax-trust-framework")
-ic(response.status_code)
+response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=gax-trust-framework")
+checkResponse(response)
 
 ic("Get shape for SD of Legal Person")
-response = requests.get("http://localhost:8085/getJSON?name=Legal%20Person.json")
-ic(response.status_code)
+response = requests.get(sd_wizard_api_base + "/getJSON?name=Legal%20Person.json")
+#response = requests.get(sd_wizard_api_base + "/getJSON?name=Storage%20Offering.json")
+checkResponse(response)
 shape_json = json.loads(response.text)
 
 # extract prefixes and fields from the json
@@ -55,6 +65,7 @@ prefixes = shape_json["prefixList"]
 fields = shape_json["shapes"]
 
 target_schema = fields[0]  # for now assume that the first listed schema is our target, # TODO this might be wrong
+#ic(target_schema)
 
 # transfer schemas in response into query-able dict
 schemas = {}
@@ -112,27 +123,30 @@ with open('vp.signed.json') as f:
 
 # retrieve oauth2 access token
 ic("Retrieving access token from oauth2 server")
-access_token = get_access_token("http://key-server:8080/realms/gaia-x/protocol/openid-connect/token",
+response = get_access_token(oauth_url,
                                 "federated-catalogue",
                                 "aCjdwOojaWEaRXnCnT7ei2PwuCiACY3N", "user", "user")
+checkResponse(response)
+access_token = response.json()["access_token"]
 ic(access_token)
 
 # send the signed presentation to the catalog API endpoint
 ic("Sending signed vp to catalog API")
-response = requests.post("http://localhost:8081/participants", headers={'Authorization': 'Bearer ' + access_token,
+response = requests.post(catalog_api_base + "/participants", headers={'Authorization': 'Bearer ' + access_token,
                                                                         "Content-Type": "application/json"},
                          data=json.dumps(d))
-ic(response.status_code)
+checkResponse(response, valid_response_code=201)
 
 # retreive stored data in the catalog
 ic("Retrieving stored data in catalog")
-response = requests.get("http://localhost:8081/participants", headers={'Authorization': 'Bearer ' + access_token,
+response = requests.get(catalog_api_base + "/participants", headers={'Authorization': 'Bearer ' + access_token,
                                                                        "accept": "application/json"})
+checkResponse(response)
 ic(response.status_code, json.loads(response.text))
 
 # delete previously created endpoint
 ic("Deleting previously created vp")
-response = requests.delete("http://localhost:8081/participants/http%3A%2F%2Fgaiax.de",
+response = requests.delete(catalog_api_base + "/participants/http%3A%2F%2Fgaiax.de",
                            headers={'Authorization': 'Bearer ' + access_token,
                                     "accept": "application/json"})
-ic(response.status_code)
+checkResponse(response)
