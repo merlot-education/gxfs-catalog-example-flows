@@ -9,6 +9,31 @@ sd_wizard_api_base = "http://localhost:8085"
 catalog_api_base = "http://localhost:8081"
 oauth_url = "http://key-server:8080/realms/gaia-x/protocol/openid-connect/token"
 
+participant_data = {
+    "@id": "gax-core:Participant1",
+    "gax-trust-framework:description": "demoValue",
+    "gax-trust-framework:headquarterAddress": {
+        "vcard:country-name": "demoValue",
+        "vcard:gps": "demoValue",
+        "vcard:locality": "demoValue",
+        "vcard:postal-code": "demoValue",
+        "vcard:street-address": "demoValue"
+    },
+    "gax-trust-framework:legalAddress": {
+        "vcard:country-name": "demoValue",
+        "vcard:gps": "demoValue",
+        "vcard:locality": "demoValue",
+        "vcard:postal-code": "demoValue",
+        "vcard:street-address": "demoValue"
+    },
+    "gax-trust-framework:legalForm": "LLC",
+    "gax-trust-framework:legalName": "demoValue",
+    "gax-trust-framework:leiCode": "demoValue",
+    "gax-trust-framework:registrationNumber": "demoValue",
+    "gax-trust-framework:parentOrganization": None,
+    "gax-trust-framework:subOrganization": None
+}
+
 
 ic("Get available Shapes")
 response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=gax-trust-framework")
@@ -32,10 +57,10 @@ target_schema = schemas["LegalPersonShape"]
 ic(target_schema)
 
 # resolve our target schema and add fields with dummy values
-filled_json = resolveSchema(target_schema, schemas)
+filled_json = resolveSchema(target_schema, schemas, participant_data)
 
 # add id of the participant
-filled_json["@id"] = "gax-core:Participant1"
+filled_json["@id"] = participant_data["@id"]
 
 # add context
 context = {}
@@ -63,7 +88,7 @@ presentation = {
     }
 }
 
-# ic(presentation)
+ic(presentation)
 
 # store the presentation as a file
 ic("Storing unsigned vp as file")

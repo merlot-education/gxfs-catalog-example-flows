@@ -9,10 +9,40 @@ import json
 import os
 from utils import checkResponse, get_access_token, resolveSchema
 
+serviceoffering_data = {
+    "@id": "https://www.example.org/mySoftwareOffering",
+    "@type": "gax-trust-framework:ServiceOffering",
+    "gax-trust-framework:providedBy": "gax-core:Participant1",
+    "gax-trust-framework:policy": "demoValue",
+    "gax-trust-framework:name": "MyServiceOffering",
+    "gax-trust-framework:termsAndConditions": {
+        "gax-trust-framework:hash": "1234",
+        "gax-trust-framework:content": "http://example.org/tac"
+    },
+    "gax-trust-framework:dataAccountExport": {
+        "gax-trust-framework:formatType": "demoValue",
+        "gax-trust-framework:accessType": "demoValue",
+        "gax-trust-framework:requestType": "demoValue",
+    },
+
+    "gax-trust-framework:dataProtectionRegime": "demoValue",
+    "gax-trust-framework:aggregationOf": None,
+    "gax-core:dependsOn": None,
+    "gax-trust-framework:dependsOn": None,
+    "dct:description": "demoValue",
+    "gax-trust-framework:ServiceOfferingLocations": "demoValue",
+    "dcat:keyword": "demoValue",
+    "gax-trust-framework:endpoint": {
+
+    },
+    "gax-core:aggregationOf": None,
+    "gax-core:offeredBy": "gax-core:Participant1",
+    "gax-trust-framework:provisionType": "demoValue",
+}
+
 sd_wizard_api_base = "http://localhost:8085"
 catalog_api_base = "http://localhost:8081"
 oauth_url = "http://key-server:8080/realms/gaia-x/protocol/openid-connect/token"
-
 
 ic("Get available Shapes")
 response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=gax-trust-framework")
@@ -36,10 +66,17 @@ target_schema = schemas["SoftwareOfferingShape"]
 ic(target_schema)
 
 # resolve our target schema and add fields with dummy values
-filled_json = resolveSchema(target_schema, schemas)
+filled_json = resolveSchema(target_schema, schemas, serviceoffering_data)
 
-# add id of the participant
-filled_json["@id"] = "gax-core:Participant1"
+# add id and type of the offering
+filled_json["@id"] = serviceoffering_data["@id"]
+filled_json["@type"] = serviceoffering_data["@type"]
+#filled_json["gax-trust-framework:mySoftwareOffering"] = {
+#    "@type": "gax-trust-framework:SoftwareOffering",
+#    "gax-trust-framework:accessType": "access type",
+#    "gax-trust-framework:formatType": "format type",
+#    "gax-trust-framework:requestType": "request type"
+#}
 
 # add context
 context = {}
@@ -59,7 +96,7 @@ presentation = {
     "type": ["VerifiablePresentation"],
     "verifiableCredential": {
         "@context": ["https://www.w3.org/2018/credentials/v1"],
-        "@id": "https://www.example.org/legalPerson.json",
+        "@id": "https://www.example.org/SoftwareOffering.json",
         "@type": ["VerifiableCredential"],
         "issuer": "http://gaiax.de",
         "issuanceDate": "2022-10-19T18:48:09Z",
@@ -67,7 +104,7 @@ presentation = {
     }
 }
 
-# ic(presentation)
+ic(presentation)
 
 # store the presentation as a file
 ic("Storing unsigned vp as file")
@@ -87,8 +124,8 @@ with open('vp.signed.json') as f:
 # retrieve oauth2 access token
 ic("Retrieving access token from oauth2 server")
 response = get_access_token(oauth_url,
-                                "federated-catalogue",
-                                "aCjdwOojaWEaRXnCnT7ei2PwuCiACY3N", "user", "user")
+                            "federated-catalogue",
+                            "aCjdwOojaWEaRXnCnT7ei2PwuCiACY3N", "user", "user")
 checkResponse(response)
 access_token = response.json()["access_token"]
 ic(access_token)
@@ -96,14 +133,14 @@ ic(access_token)
 # send the signed presentation to the catalog API endpoint
 ic("Sending signed vp to catalog API")
 response = requests.post(catalog_api_base + "/self-descriptions", headers={'Authorization': 'Bearer ' + access_token,
-                                                                        "Content-Type": "application/json"},
+                                                                           "Content-Type": "application/json"},
                          data=json.dumps(d))
 checkResponse(response, valid_response_code=201)
 
 # retreive stored data in the catalog
 ic("Retrieving stored data in catalog")
 response = requests.get(catalog_api_base + "/participants", headers={'Authorization': 'Bearer ' + access_token,
-                                                                       "accept": "application/json"})
+                                                                     "accept": "application/json"})
 checkResponse(response)
 ic(response.status_code, json.loads(response.text))
 
