@@ -1,3 +1,7 @@
+# This is a sample Python script.
+
+# Press Umschalt+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 import requests
 from icecream import ic
@@ -14,8 +18,8 @@ ic("Get available Shapes")
 response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=gax-trust-framework")
 checkResponse(response)
 
-ic("Get shape for SD of Legal Person")
-response = requests.get(sd_wizard_api_base + "/getJSON?name=Legal%20Person.json")
+ic("Get shape for SD of Software Offering")
+response = requests.get(sd_wizard_api_base + "/getJSON?name=Software%20Offering.json")
 checkResponse(response)
 shape_json = json.loads(response.text)
 
@@ -28,7 +32,7 @@ schemas = {}
 for f in fields:
     schemas[f["schema"]] = f
 
-target_schema = schemas["LegalPersonShape"]
+target_schema = schemas["SoftwareOfferingShape"]
 ic(target_schema)
 
 # resolve our target schema and add fields with dummy values
@@ -91,7 +95,7 @@ ic(access_token)
 
 # send the signed presentation to the catalog API endpoint
 ic("Sending signed vp to catalog API")
-response = requests.post(catalog_api_base + "/participants", headers={'Authorization': 'Bearer ' + access_token,
+response = requests.post(catalog_api_base + "/self-descriptions", headers={'Authorization': 'Bearer ' + access_token,
                                                                         "Content-Type": "application/json"},
                          data=json.dumps(d))
 checkResponse(response, valid_response_code=201)
