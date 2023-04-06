@@ -8,9 +8,6 @@ from icecream import ic
 import json
 import os
 
-access_token = "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJfb0lXMGJhNjZCcDZILUN6alVSb1lUcTc0QTlGeHBnaEJ6LXAzWEZaRlNNIn0.eyJleHAiOjE2ODA3ODIwODYsImlhdCI6MTY4MDc4MTE4NiwianRpIjoiMDQwYmUyNzUtYTIwMC00NWNkLTllMDEtYzU4MDUxODRkMzhhIiwiaXNzIjoiaHR0cDovL2tleS1zZXJ2ZXI6ODA4MC9yZWFsbXMvZ2FpYS14Iiwic3ViIjoiNGNmMjMxMjItMmI2Ny00OGQ4LWIyZDEtZGFiOTBlZjBmMTE0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZmVkZXJhdGVkLWNhdGFsb2d1ZSIsInNlc3Npb25fc3RhdGUiOiIwYzU2NjU5NS1kZWI3LTQ5MDgtYTc5MS0wNzQ4MWFiNjc1OTgiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtZ2FpYS14Il19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiZmVkZXJhdGVkLWNhdGFsb2d1ZSI6eyJyb2xlcyI6WyJSby1NVS1DQSIsIlJvLU1VLUEiLCJSby1TRC1BIiwiUm8tUEEtQSJdfX0sInNjb3BlIjoib3BlbmlkIGdhaWEteCIsInNpZCI6IjBjNTY2NTk1LWRlYjctNDkwOC1hNzkxLTA3NDgxYWI2NzU5OCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoidXNlciB1c2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlciIsImdpdmVuX25hbWUiOiJ1c2VyIiwiZmFtaWx5X25hbWUiOiJ1c2VyIiwiZW1haWwiOiJ1c2VyQHVzZXIudXNlciJ9.AoeeR3lwb8ZmTY6mQGQvs2YIH46Fn1hOLdOCvN2hJ_nIuA7YkoSpdyiRiPGITtH5agG6DS6xPpms8TiMYj0_6dvBzHHPuzBvh9LtSnBf-Usc1yOIEMWmcuiI8iNF7O0Mk5mF58SXBV9vRMFYmWniytQUdL3JXiCK-_u63-yHKdlLwgJQMLwvM7XNjiYwNjZI0lHYe1NokTNXL_mpoqnMPovCarU6qT9sNpXY0ufeqGha1hmUE19XlQ5Xr-8yQ1oARYDY1MSO7N9V3jV4RvgCBXBhcz3EYMR1uQwbBibANHWVYTFrVVSd8BNg5_adsCvXT8ZTBg5Kri_knXuvwZO_Ng"
-
-
 def resolveSchema(schema, all_schemas):
     # initialize a dict for our current entry and set the type field according to the schema
     entry = {}
@@ -30,6 +27,18 @@ def resolveSchema(schema, all_schemas):
                 "@value": "demoValue" if not constraint["in"] else constraint["in"][0]["value"]
             }
     return entry
+
+
+def get_access_token(url, client_id, client_secret, user, password):
+    response = requests.post(url, data={
+        'grant_type': 'password',
+        'client_id': client_id,
+        'client_secret': client_secret,
+        'username': user,
+        'password': password
+    })
+    ic(response.status_code)
+    return response.json()["access_token"]
 
 
 ic("Get available Shapes")
@@ -62,7 +71,8 @@ filled_json["@id"] = "gax-core:Participant1"
 context = {}
 for p in prefixes:
     if p["alias"] == "gax-trust-framework":
-        context[p["alias"]] = p["url"].replace("http", "https")  # for gax-trust-framework we need an https instead of http, this is a bug of the wizard
+        context[p["alias"]] = p["url"].replace("http",
+                                               "https")  # for gax-trust-framework we need an https instead of http, this is a bug of the wizard
     else:
         context[p["alias"]] = p["url"]
 filled_json["@context"] = context
@@ -83,7 +93,7 @@ presentation = {
     }
 }
 
-#ic(presentation)
+# ic(presentation)
 
 # store the presentation as a file
 ic("Storing unsigned vp as file")
@@ -100,20 +110,29 @@ d = None
 with open('vp.signed.json') as f:
     d = json.load(f)
 
+# retrieve oauth2 access token
+ic("Retrieving access token from oauth2 server")
+access_token = get_access_token("http://key-server:8080/realms/gaia-x/protocol/openid-connect/token",
+                                "federated-catalogue",
+                                "aCjdwOojaWEaRXnCnT7ei2PwuCiACY3N", "user", "user")
+ic(access_token)
+
 # send the signed presentation to the catalog API endpoint
 ic("Sending signed vp to catalog API")
 response = requests.post("http://localhost:8081/participants", headers={'Authorization': 'Bearer ' + access_token,
-                                                                        "Content-Type": "application/json"}, data=json.dumps(d))
+                                                                        "Content-Type": "application/json"},
+                         data=json.dumps(d))
 ic(response.status_code)
 
 # retreive stored data in the catalog
 ic("Retrieving stored data in catalog")
 response = requests.get("http://localhost:8081/participants", headers={'Authorization': 'Bearer ' + access_token,
-                                                                        "accept": "application/json"})
+                                                                       "accept": "application/json"})
 ic(response.status_code, json.loads(response.text))
 
 # delete previously created endpoint
 ic("Deleting previously created vp")
-response = requests.delete("http://localhost:8081/participants/http%3A%2F%2Fgaiax.de", headers={'Authorization': 'Bearer ' + access_token,
-                                                                        "accept": "application/json"})
+response = requests.delete("http://localhost:8081/participants/http%3A%2F%2Fgaiax.de",
+                           headers={'Authorization': 'Bearer ' + access_token,
+                                    "accept": "application/json"})
 ic(response.status_code)
