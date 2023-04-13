@@ -9,6 +9,12 @@ import json
 import os
 from utils import checkResponse, get_access_token, resolveSchema
 
+file_sd_override = ""
+
+sd_wizard_api_base = "http://localhost:8085"
+catalog_api_base = "http://localhost:8081"
+oauth_url = "http://key-server:8080/realms/gaia-x/protocol/openid-connect/token"
+
 serviceoffering_data = {
     "@id": "https://www.example.org/mySoftwareOffering",
     "@type": "gax-trust-framework:ServiceOffering",
@@ -40,53 +46,55 @@ serviceoffering_data = {
     "gax-trust-framework:provisionType": "demoValue",
 }
 
-sd_wizard_api_base = "http://localhost:8085"
-catalog_api_base = "http://localhost:8081"
-oauth_url = "http://key-server:8080/realms/gaia-x/protocol/openid-connect/token"
+if not file_sd_override:
+    ic("Get available Shapes")
+    response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=gax-trust-framework")
+    checkResponse(response)
 
-ic("Get available Shapes")
-response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=gax-trust-framework")
-checkResponse(response)
+    ic("Get shape for SD of Software Offering")
+    response = requests.get(sd_wizard_api_base + "/getJSON?name=Software%20Offering.json")
+    checkResponse(response)
+    shape_json = json.loads(response.text)
 
-ic("Get shape for SD of Software Offering")
-response = requests.get(sd_wizard_api_base + "/getJSON?name=Software%20Offering.json")
-checkResponse(response)
-shape_json = json.loads(response.text)
+    # extract prefixes and fields from the json
+    prefixes = shape_json["prefixList"]
+    fields = shape_json["shapes"]
 
-# extract prefixes and fields from the json
-prefixes = shape_json["prefixList"]
-fields = shape_json["shapes"]
+    # transfer schemas in response into query-able dict
+    schemas = {}
+    for f in fields:
+        schemas[f["schema"]] = f
 
-# transfer schemas in response into query-able dict
-schemas = {}
-for f in fields:
-    schemas[f["schema"]] = f
+    target_schema = schemas["SoftwareOfferingShape"]
+    ic(target_schema)
 
-target_schema = schemas["SoftwareOfferingShape"]
-ic(target_schema)
+    # resolve our target schema and add fields with dummy values
+    filled_json = resolveSchema(target_schema, schemas, serviceoffering_data)
 
-# resolve our target schema and add fields with dummy values
-filled_json = resolveSchema(target_schema, schemas, serviceoffering_data)
+    # add id and type of the offering
+    filled_json["@id"] = serviceoffering_data["@id"]
+    filled_json["@type"] = serviceoffering_data["@type"]
+    #filled_json["gax-trust-framework:mySoftwareOffering"] = {
+    #    "@type": "gax-trust-framework:SoftwareOffering",
+    #    "gax-trust-framework:accessType": "access type",
+    #    "gax-trust-framework:formatType": "format type",
+    #    "gax-trust-framework:requestType": "request type"
+    #}
 
-# add id and type of the offering
-filled_json["@id"] = serviceoffering_data["@id"]
-filled_json["@type"] = serviceoffering_data["@type"]
-#filled_json["gax-trust-framework:mySoftwareOffering"] = {
-#    "@type": "gax-trust-framework:SoftwareOffering",
-#    "gax-trust-framework:accessType": "access type",
-#    "gax-trust-framework:formatType": "format type",
-#    "gax-trust-framework:requestType": "request type"
-#}
-
-# add context
-context = {}
-for p in prefixes:
-    if p["alias"] == "gax-trust-framework":
-        context[p["alias"]] = p["url"].replace("http",
-                                               "https")  # for gax-trust-framework we need an https instead of http, this is a bug of the wizard
-    else:
-        context[p["alias"]] = p["url"]
-filled_json["@context"] = context
+    # add context
+    context = {}
+    for p in prefixes:
+        if p["alias"] == "gax-trust-framework":
+            context[p["alias"]] = p["url"].replace("http",
+                                                   "https")  # for gax-trust-framework we need an https instead of http, this is a bug of the wizard
+        else:
+            context[p["alias"]] = p["url"]
+    filled_json["@context"] = context
+else:
+    ic("Load self description from file")
+    filled_json = None
+    with open(file_sd_override) as f:
+        filled_json = json.load(f)
 
 ic("Compile SD into verifiable presentation")
 # pad the sd with a verifiable presentation
