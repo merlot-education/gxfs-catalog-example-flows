@@ -14,6 +14,9 @@ file_sd_override = ""
 sd_wizard_api_base = "http://localhost:8085"
 catalog_api_base = "http://localhost:8081"
 oauth_url = "http://key-server:8080/realms/gaia-x/protocol/openid-connect/token"
+oauth_client_secret = "Gwgyztr19uz1N4lU5wpTUV9rbbl9sVrb"
+oauth_user = "user"
+oauth_pass = "user"
 
 serviceoffering_data = {
     "@id": "https://www.example.org/mySoftwareOffering",
@@ -133,7 +136,7 @@ with open('vp.signed.json') as f:
 ic("Retrieving access token from oauth2 server")
 response = get_access_token(oauth_url,
                             "federated-catalogue",
-                            "aCjdwOojaWEaRXnCnT7ei2PwuCiACY3N", "user", "user")
+                            oauth_client_secret, oauth_user, oauth_pass)
 checkResponse(response)
 access_token = response.json()["access_token"]
 ic(access_token)
