@@ -9,10 +9,10 @@ file_sd_override = ""
 
 sd_wizard_api_base = "http://localhost:8085"
 catalog_api_base = "http://localhost:8081"
-oauth_url = "http://key-server:8080/realms/gaia-x/protocol/openid-connect/token"
-oauth_client_secret = "Gwgyztr19uz1N4lU5wpTUV9rbbl9sVrb"
-oauth_user = "user"
-oauth_pass = "user"
+oauth_url = "https://sso.common.merlot-education.eu/realms/gxfscatalog/protocol/openid-connect/token"
+oauth_client_secret = os.getenv('OAUTH2_CLIENT_SECRET')
+oauth_user = "gxfscatalog"
+oauth_pass = os.getenv('OAUTH2_PASS')
 
 participant_data = {
     "@id": "gax-core:Participant1",
@@ -38,6 +38,7 @@ participant_data = {
     "gax-trust-framework:parentOrganization": None,
     "gax-trust-framework:subOrganization": None
 }
+issuer = "http://Participant1"
 
 if not file_sd_override:
     ic("Get available Shapes")
@@ -96,7 +97,7 @@ presentation = {
         "@context": ["https://www.w3.org/2018/credentials/v1"],
         "@id": "https://www.example.org/legalPerson.json",
         "@type": ["VerifiableCredential"],
-        "issuer": "http://gaiax.de",
+        "issuer": issuer,
         "issuanceDate": "2022-10-19T18:48:09Z",
         "credentialSubject": filled_json
     }
@@ -146,7 +147,7 @@ ic(response.status_code, json.loads(response.text))
 
 # delete previously created endpoint
 ic("Deleting previously created vp")
-response = requests.delete(catalog_api_base + "/participants/http%3A%2F%2Fgaiax.de",
+response = requests.delete(catalog_api_base + "/participants/" + issuer.replace(":", "%3A").replace("/", "%2F"),
                            headers={'Authorization': 'Bearer ' + access_token,
                                     "accept": "application/json"})
 checkResponse(response)
