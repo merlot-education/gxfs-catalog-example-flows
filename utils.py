@@ -21,10 +21,16 @@ def resolveSchema(schema, all_schemas, entryValues={}):
                 entry[path] = resolveSchema(subschema, all_schemas, entryValues[path])
             else:  # otherwise we simply resolve all constraints and add them to the dict
                 datatype = constraint["datatype"]["prefix"] + ":" + constraint["datatype"]["value"]
-                entry[path] = {
-                    "@type": datatype,
-                    "@value": entryValues[path]
-                }
+                if datatype == "nodeKind:IRI":
+                    entry[path] = {
+                        "@type": datatype,
+                        "@id": entryValues[path]
+                    }
+                else:
+                    entry[path] = {
+                        "@type": datatype,
+                        "@value": entryValues[path]
+                    }
         elif "minCount" in constraint.keys():
             ic("required field was not populated, exiting...")
             ic(constraint)

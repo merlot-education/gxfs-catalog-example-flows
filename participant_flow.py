@@ -76,6 +76,9 @@ if not file_sd_override:
         if p["alias"] == "gax-trust-framework":
             context[p["alias"]] = p["url"].replace("http",
                                                    "https")  # for gax-trust-framework we need an https instead of http, this is a bug of the wizard
+        elif p["alias"] == "gax-core":
+            context[p["alias"]] = p["url"].replace("http",
+                                                   "https")  # for gax-core we need an https instead of http, this is a bug of the wizard
         else:
             context[p["alias"]] = p["url"]
     filled_json["@context"] = context

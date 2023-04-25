@@ -18,35 +18,29 @@ oauth_client_secret = os.getenv('OAUTH2_CLIENT_SECRET')
 oauth_user = "gxfscatalog"
 oauth_pass = os.getenv('OAUTH2_PASS')
 
+issuer = "http://10"
 serviceoffering_data = {
-    "@id": "https://www.example.org/mySoftwareOffering",
+    # required fields
+    "@id": "ServiceOffering:MyServiceOffering",
     "@type": "gax-trust-framework:ServiceOffering",
-    "gax-trust-framework:providedBy": "gax-core:Participant1",
-    "gax-trust-framework:policy": "demoValue",
-    "gax-trust-framework:name": "MyServiceOffering",
     "gax-trust-framework:termsAndConditions": {
         "gax-trust-framework:hash": "1234",
         "gax-trust-framework:content": "http://example.org/tac"
     },
+    "gax-trust-framework:providedBy": issuer,  # required in wizard but not in actual catalog...
+    "gax-trust-framework:policy": "demoValue",
+    "gax-trust-framework:name": "MyServiceOffering",
     "gax-trust-framework:dataAccountExport": {
         "gax-trust-framework:formatType": "demoValue",
         "gax-trust-framework:accessType": "demoValue",
         "gax-trust-framework:requestType": "demoValue",
     },
+    "gax-core:offeredBy": issuer,
 
-    "gax-trust-framework:dataProtectionRegime": "demoValue",
-    "gax-trust-framework:aggregationOf": None,
-    "gax-core:dependsOn": None,
-    "gax-trust-framework:dependsOn": None,
-    "dct:description": "demoValue",
-    "gax-trust-framework:ServiceOfferingLocations": "demoValue",
-    "dcat:keyword": "demoValue",
+    # optional fields
     "gax-trust-framework:endpoint": {
-
+        "gax-trust-framework:endPointURL": "http://example.org/endpoint"
     },
-    "gax-core:aggregationOf": None,
-    "gax-core:offeredBy": "gax-core:Participant1",
-    "gax-trust-framework:provisionType": "demoValue",
 }
 
 if not file_sd_override:
@@ -58,6 +52,7 @@ if not file_sd_override:
     response = requests.get(sd_wizard_api_base + "/getJSON?name=Software%20Offering.json")
     checkResponse(response)
     shape_json = json.loads(response.text)
+    ic(shape_json)
 
     # extract prefixes and fields from the json
     prefixes = shape_json["prefixList"]
@@ -90,6 +85,9 @@ if not file_sd_override:
         if p["alias"] == "gax-trust-framework":
             context[p["alias"]] = p["url"].replace("http",
                                                    "https")  # for gax-trust-framework we need an https instead of http, this is a bug of the wizard
+        elif p["alias"] == "gax-core":
+            context[p["alias"]] = p["url"].replace("http",
+                                                   "https")  # for gax-core we need an https instead of http, this is a bug of the wizard
         else:
             context[p["alias"]] = p["url"]
     filled_json["@context"] = context
@@ -107,9 +105,9 @@ presentation = {
     "type": ["VerifiablePresentation"],
     "verifiableCredential": {
         "@context": ["https://www.w3.org/2018/credentials/v1"],
-        "@id": "https://www.example.org/SoftwareOffering.json",
+        "@id": "https://www.example.org/ServiceOffering.json",
         "@type": ["VerifiableCredential"],
-        "issuer": "http://gaiax.de",
+        "issuer": issuer,
         "issuanceDate": "2022-10-19T18:48:09Z",
         "credentialSubject": filled_json
     }
@@ -148,16 +146,20 @@ response = requests.post(catalog_api_base + "/self-descriptions", headers={'Auth
                          data=json.dumps(d))
 checkResponse(response, valid_response_code=201)
 
+ic(response.text)
+
+sdHash = json.loads(response.text)["sdHash"]
+
 # retreive stored data in the catalog
 ic("Retrieving stored data in catalog")
-response = requests.get(catalog_api_base + "/participants", headers={'Authorization': 'Bearer ' + access_token,
+response = requests.get(catalog_api_base + "/self-descriptions/" + sdHash, headers={'Authorization': 'Bearer ' + access_token,
                                                                      "accept": "application/json"})
 checkResponse(response)
 ic(response.status_code, json.loads(response.text))
 
 # delete previously created endpoint
 ic("Deleting previously created vp")
-response = requests.delete(catalog_api_base + "/participants/http%3A%2F%2Fgaiax.de",
+response = requests.delete(catalog_api_base + "/self-descriptions/" + sdHash,
                            headers={'Authorization': 'Bearer ' + access_token,
                                     "accept": "application/json"})
 checkResponse(response)
