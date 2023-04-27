@@ -18,76 +18,93 @@ with open('orgas.json') as f:
 for sd in d:
     ic(sd)
     participant_data = {
-        "@id": sd["id"],
-        "@type": "merlot:MerlotOrganization",
         "@context": {
-            "cc": "http://creativecommons.org/ns#",
-            "cred": "https://www.w3.org/2018/credentials#",
-            "dcat": "http://www.w3.org/ns/dcat#",
-            "dct": "http://purl.org/dc/terms/",
-            "did": "https://www.w3.org/TR/did-core/#",
-            "foaf": "http://xmlns.com/foaf/0.1/",
-            "gax-core": "http://w3id.org/gaia-x/core#",
-            "gax-trust-framework": "https://w3id.org/gaia-x/gax-trust-framework#",
-            "merlot": "https://w3id.org/gaia-x/merlot#",
+            "gax-trust-framework": "http://w3id.org/gaia-x/gax-trust-framework#",
+            "merlot": "http://w3id.org/gaia-x/merlot#",
             "gax-validation": "http://w3id.org/gaia-x/validation#",
-            "ids": "https://w3id.org/idsa/core/",
-            "owl": "http://www.w3.org/2002/07/owl#",
             "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-            "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-            "schema": "http://schema.org/",
             "sh": "http://www.w3.org/ns/shacl#",
             "skos": "http://www.w3.org/2004/02/skos/core#",
-            "vann": "http://purl.org/vocab/vann/",
             "vcard": "http://www.w3.org/2006/vcard/ns#",
-            "voaf": "http://purl.org/vocommons/voaf#",
-            "void": "http://rdfs.org/ns/void#",
             "xsd": "http://www.w3.org/2001/XMLSchema#"
         },
-        "merlot:legalAddress": {
-            "@type": "vcard:Address",
+        "@id": sd["id"],
+        "@type": "merlot:MerlotOrganization",
+        "gax-trust-framework:headquarterAddress": {
             "vcard:country-name": {
-                "@type": "xsd:string",
-                "@value": sd["legalAddress"]["countryCode"]
+                "@value": sd["legalAddress"]["countryCode"],
+                "@type": "xsd:string"
+            },
+            "vcard:postal-code": {
+                "@value": sd["legalAddress"]["postalCode"],
+                "@type": "xsd:string"
+            },
+            "vcard:street-address": {
+                "@value": sd["legalAddress"]["street"],
+                "@type": "xsd:string"
+            },
+            "vcard:number": {
+                "@value": 1,
+                "@type": "xsd:integer"
             },
             "vcard:locality": {
                 "@type": "xsd:string",
                 "@value": sd["legalAddress"]["city"]
             },
+            "@type": "vcard:Address"
+        },
+        "gax-trust-framework:legalAddress": {
+            "vcard:country-name": {
+                "@value": sd["legalAddress"]["countryCode"],
+                "@type": "xsd:string"
+            },
             "vcard:postal-code": {
-                "@type": "xsd:string",
-                "@value": sd["legalAddress"]["postalCode"]
+                "@value": sd["legalAddress"]["postalCode"],
+                "@type": "xsd:string"
             },
             "vcard:street-address": {
+                "@value": sd["legalAddress"]["street"],
+                "@type": "xsd:string"
+            },
+            "vcard:number": {
+                "@value": 1,
+                "@type": "xsd:integer"
+            },
+            "vcard:locality": {
                 "@type": "xsd:string",
-                "@value": sd["legalAddress"]["street"]
-            }
+                "@value": sd["legalAddress"]["city"]
+            },
+            "@type": "vcard:Address"
         },
-        "merlot:legalName": {
-            "@type": "xsd:string",
-            "@value": sd["organizationLegalName"]
+        "gax-trust-framework:registrationNumber": {
+            "gax-trust-framework:local": {
+                "@value": sd["registrationNumber"],
+                "@type": "xsd:string"
+            },
+            "@type": "gax-trust-framework:RegistrationNumber"
         },
-        "merlot:registrationNumber": {
-            "@type": "xsd:string",
-            "@value": sd["registrationNumber"]
+        "gax-trust-framework:legalName": {
+            "@value": sd["organizationLegalName"],
+            "@type": "xsd:string"
         },
-        "merlot:merlotID": {
-            "@type": "xsd:string",
-            "@value": sd["merlotId"]
+        "merlot:termsConditionsLink": {
+            "@value": sd["termsAndConditionsLink"],
+            "@type": "xsd:string"
         },
         "merlot:orgaName": {
-            "@type": "xsd:string",
-            "@value": sd["organizationName"]
+            "@value": sd["organizationName"],
+            "@type": "xsd:string"
+        },
+        "merlot:merlotId": {
+            "@value": sd["merlotId"],
+            "@type": "xsd:string"
         },
         "merlot:addressCode": {
-            "@type": "xsd:string",
-            "@value": sd["legalAddress"]["addressCode"]
-        },
-        "merlot:termsAndConditionsLink": {
-            "@type": "xsd:string",
-            "@value": sd["termsAndConditionsLink"]
+            "@value": sd["legalAddress"]["addressCode"],
+            "@type": "xsd:string"
         }
     }
+
     issuer = sd["id"]
 
     presentation = {

@@ -5,7 +5,7 @@ import json
 import os
 from utils import checkResponse, get_access_token, resolveSchema
 
-file_sd_override = ""
+file_sd_override = "vp-merlotOrganization.json"
 
 sd_wizard_api_base = "http://localhost:8085"
 catalog_api_base = "http://localhost:8081"
@@ -16,38 +16,28 @@ oauth_pass = os.getenv('OAUTH2_PASS')
 
 participant_data = {
     "@id": "gax-core:Participant1",
-    "gax-trust-framework:description": "demoValue",
+    "merlot:termsConditionsLink": "http://example.com",
+    "merlot:orgaName": "DemoOrga",
+    "merlot:merlotId": "1234",
+    "merlot:addressCode": "BE-BRU",
+
     "gax-trust-framework:headquarterAddress": {
-        "vcard:country-name": "demoValue",
-        "vcard:gps": "demoValue",
-        "vcard:locality": "demoValue",
-        "vcard:postal-code": "demoValue",
-        "vcard:street-address": "demoValue"
+    },
+    "gax-trust-framework:registrationNumber": {
     },
     "gax-trust-framework:legalAddress": {
-        "vcard:country-name": "demoValue",
-        "vcard:gps": "demoValue",
-        "vcard:locality": "demoValue",
-        "vcard:postal-code": "demoValue",
-        "vcard:street-address": "demoValue"
     },
-    "gax-trust-framework:legalForm": "LLC",
-    "gax-trust-framework:legalName": "demoValue",
-    "gax-trust-framework:leiCode": "demoValue",
-    "gax-trust-framework:registrationNumber": "demoValue",
-    "gax-trust-framework:parentOrganization": None,
-    "gax-trust-framework:subOrganization": None
 }
 issuer = "http://Participant1"
 
 if not file_sd_override:
     ic("Get available Shapes")
-    response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=gax-trust-framework")
+    response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=merlot")
     checkResponse(response)
     ic(response.text)
 
-    ic("Get shape for SD of Legal Person")
-    response = requests.get(sd_wizard_api_base + "/getJSON?name=Legal%20Person.json")
+    ic("Get shape for SD of Merlot Organization")
+    response = requests.get(sd_wizard_api_base + "/getJSON?name=Merlot%20Organization.json")
     checkResponse(response)
     shape_json = json.loads(response.text)
     ic(shape_json)
@@ -61,7 +51,7 @@ if not file_sd_override:
     for f in fields:
         schemas[f["schema"]] = f
 
-    target_schema = schemas["LegalPersonShape"]
+    target_schema = schemas["MerlotOrganizationShape"]
     ic(target_schema)
 
     # resolve our target schema and add fields with dummy values
