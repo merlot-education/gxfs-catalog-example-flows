@@ -13,16 +13,16 @@ file_sd_override = ""
 
 from config import oauth_user,oauth_pass, oauth_url, oauth_client_secret, catalog_api_base, sd_wizard_api_base
 
-issuer = "http://10"
+issuer = "http://Participant1"
 serviceoffering_data = {
     # required fields
     "@id": "ServiceOffering:MyServiceOffering",
-    "@type": "gax-trust-framework:ServiceOffering",
+    "@type": "merlot:MerlotServiceOffering",
     "gax-trust-framework:termsAndConditions": {
         "gax-trust-framework:hash": "1234",
         "gax-trust-framework:content": "http://example.org/tac"
     },
-    "gax-trust-framework:providedBy": issuer,  # required in wizard but not in actual catalog...
+    "gax-trust-framework:providedBy": issuer,
     "gax-trust-framework:policy": "demoValue",
     "gax-trust-framework:name": "MyServiceOffering",
     "gax-trust-framework:dataAccountExport": {
@@ -33,18 +33,18 @@ serviceoffering_data = {
     "gax-core:offeredBy": issuer,
 
     # optional fields
-    "gax-trust-framework:endpoint": {
-        "gax-trust-framework:endPointURL": "http://example.org/endpoint"
-    },
+    "merlot:serviceId": "1234",
+    "merlot:creationDate": "01.01.2023",
+    "merlot:dataAccessType": "Download",
 }
 
 if not file_sd_override:
     ic("Get available Shapes")
-    response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=gax-trust-framework")
+    response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=merlot")
     checkResponse(response)
 
     ic("Get shape for SD of Software Offering")
-    response = requests.get(sd_wizard_api_base + "/getJSON?name=Software%20Offering.json")
+    response = requests.get(sd_wizard_api_base + "/getJSON?name=Merlot%20ServiceOffering.json")
     checkResponse(response)
     shape_json = json.loads(response.text)
     ic(shape_json)
@@ -58,7 +58,7 @@ if not file_sd_override:
     for f in fields:
         schemas[f["schema"]] = f
 
-    target_schema = schemas["SoftwareOfferingShape"]
+    target_schema = schemas["MerlotServiceOfferingShape"]
     ic(target_schema)
 
     # resolve our target schema and add fields with dummy values
@@ -77,13 +77,6 @@ if not file_sd_override:
     # add context
     context = {}
     for p in prefixes:
-        if p["alias"] == "gax-trust-framework":
-            context[p["alias"]] = p["url"].replace("http",
-                                                   "https")  # for gax-trust-framework we need an https instead of http, this is a bug of the wizard
-        elif p["alias"] == "gax-core":
-            context[p["alias"]] = p["url"].replace("http",
-                                                   "https")  # for gax-core we need an https instead of http, this is a bug of the wizard
-        else:
             context[p["alias"]] = p["url"]
     filled_json["@context"] = context
 else:
