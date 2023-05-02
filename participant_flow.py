@@ -17,17 +17,24 @@ participant_data = {
     "merlot:addressCode": "BE-BRU",
 
     "gax-trust-framework:headquarterAddress": {
+        "vcard:country-name": "asdf",
+        "vcard:street-address": "asdf",
+        "vcard:postal-code": "asdf",
     },
     "gax-trust-framework:registrationNumber": {
+        "gax-trust-framework:local": "asdf"
     },
     "gax-trust-framework:legalAddress": {
+        "vcard:country-name": "asdf",
+        "vcard:street-address": "asdf",
+        "vcard:postal-code": "asdf",
     },
 }
 issuer = "http://Participant1"
 
 if not file_sd_override:
     ic("Get available Shapes")
-    response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=gax-trust-framework")
+    response = requests.get(sd_wizard_api_base + "/getAvailableShapesCategorized?ecoSystem=merlot")
     checkResponse(response)
     ic(response.text)
 
@@ -58,14 +65,7 @@ if not file_sd_override:
     # add context
     context = {}
     for p in prefixes:
-        if p["alias"] == "gax-trust-framework":
-            context[p["alias"]] = p["url"].replace("http",
-                                                   "https")  # for gax-trust-framework we need an https instead of http, this is a bug of the wizard
-        elif p["alias"] == "gax-core":
-            context[p["alias"]] = p["url"].replace("http",
-                                                   "https")  # for gax-core we need an https instead of http, this is a bug of the wizard
-        else:
-            context[p["alias"]] = p["url"]
+        context[p["alias"]] = p["url"]
     filled_json["@context"] = context
 
     ic(filled_json)

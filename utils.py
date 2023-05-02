@@ -31,6 +31,12 @@ def resolveSchema(schema, all_schemas, entryValues={}):
                         "@type": datatype,
                         "@value": entryValues[path]
                     }
+
+                if path.startswith("vcard"):  # TODO research why this field is required
+                    entry["vcard:number"] = {
+                        "@type": "xsd:integer",
+                        "@value": 1.0
+                    }
         elif "minCount" in constraint.keys():
             ic("required field was not populated, exiting...")
             ic(constraint)
