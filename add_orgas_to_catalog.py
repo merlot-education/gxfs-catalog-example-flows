@@ -16,8 +16,8 @@ for sd in d:
     participant_data = {
         "@context": {
             "gax-trust-framework": "http://w3id.org/gaia-x/gax-trust-framework#",
-            "merlot": "http://w3id.org/gaia-x/merlot#",
             "gax-validation": "http://w3id.org/gaia-x/validation#",
+            "merlot": "http://w3id.org/gaia-x/merlot#",
             "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
             "sh": "http://www.w3.org/ns/shacl#",
             "skos": "http://www.w3.org/2004/02/skos/core#",
@@ -39,10 +39,6 @@ for sd in d:
                 "@value": sd["legalAddress"]["street"],
                 "@type": "xsd:string"
             },
-            "vcard:number": {
-                "@value": 1,
-                "@type": "xsd:integer"
-            },
             "vcard:locality": {
                 "@type": "xsd:string",
                 "@value": sd["legalAddress"]["city"]
@@ -61,10 +57,6 @@ for sd in d:
             "vcard:street-address": {
                 "@value": sd["legalAddress"]["street"],
                 "@type": "xsd:string"
-            },
-            "vcard:number": {
-                "@value": 1,
-                "@type": "xsd:integer"
             },
             "vcard:locality": {
                 "@type": "xsd:string",

@@ -18,16 +18,12 @@ participant_data = {
 
     "gax-trust-framework:headquarterAddress": {
         "vcard:country-name": "asdf",
-        "vcard:street-address": "asdf",
-        "vcard:postal-code": "asdf",
     },
     "gax-trust-framework:registrationNumber": {
         "gax-trust-framework:local": "asdf"
     },
     "gax-trust-framework:legalAddress": {
         "vcard:country-name": "asdf",
-        "vcard:street-address": "asdf",
-        "vcard:postal-code": "asdf",
     },
 }
 issuer = "http://Participant1"
