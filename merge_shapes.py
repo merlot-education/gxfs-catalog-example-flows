@@ -1,6 +1,6 @@
 import os
 
-shape_base_folder = "/home/mbuskies/gxfs/service-characteristics/yaml2shacl/"
+shape_base_folder = "/home/mbuskies/gxfs/service-characteristics-22.10/yaml2shacl/"
 shape_output_path = os.path.join(shape_base_folder, "mergedShapes.ttl")
 
 prefixes = set()

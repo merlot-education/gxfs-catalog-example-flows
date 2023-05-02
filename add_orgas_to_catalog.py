@@ -6,11 +6,7 @@ from icecream import ic
 
 from utils import get_access_token, checkResponse
 
-catalog_api_base = "http://localhost:8081"
-oauth_url = "https://sso.common.merlot-education.eu/realms/gxfscatalog/protocol/openid-connect/token"
-oauth_client_secret = os.getenv('OAUTH2_CLIENT_SECRET')
-oauth_user = "gxfscatalog"
-oauth_pass = os.getenv('OAUTH2_PASS')
+from config import oauth_user,oauth_pass, oauth_url, oauth_client_secret, catalog_api_base
 
 with open('orgas.json') as f:
     d = json.load(f)

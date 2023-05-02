@@ -4,11 +4,7 @@ import os
 import requests
 import json
 
-catalog_api_base = "http://localhost:8081"
-oauth_url = "https://sso.common.merlot-education.eu/realms/gxfscatalog/protocol/openid-connect/token"
-oauth_client_secret = os.getenv('OAUTH2_CLIENT_SECRET')
-oauth_user = "gxfscatalog"
-oauth_pass = os.getenv('OAUTH2_PASS')
+from config import oauth_user,oauth_pass, oauth_url, oauth_client_secret, catalog_api_base
 
 ontology_base_folder = "/home/mbuskies/gxfs/service-characteristics/yaml2ontology/"
 merged_shapes_path = "/home/mbuskies/gxfs/service-characteristics/yaml2shacl/mergedShapes.ttl"
