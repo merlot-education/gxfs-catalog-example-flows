@@ -1,0 +1,77 @@
+[
+  {
+    "id": "http://10",
+    "merlotId": "10",
+    "organizationName": "Gaia-X AISBL",
+    "organizationLegalName": "Gaia-X European Association for Data and Cloud AISBL",
+    "registrationNumber": "0762747721",
+    "termsAndConditionsLink": "http://example.com",
+    "legalAddress": {
+      "countryCode": "BE",
+      "postalCode": "1210",
+      "addressCode": "BE-BRU",
+      "city": "Brüssel",
+      "street": "Avenue des Arts 6-9"
+    }
+  },
+  {
+    "id": "http://20",
+    "merlotId": "20",
+    "organizationName": "Dataport",
+    "organizationLegalName": "Dataport AöR",
+    "registrationNumber": "",
+    "termsAndConditionsLink": "http://example.com",
+    "legalAddress": {
+      "countryCode": "D",
+      "postalCode": "24161",
+      "addressCode": "",
+      "city": "Altenholz",
+      "street": "Altenholzer Straße 10–14"
+    }
+  },
+  {
+    "id": "http://30",
+    "merlotId": "30",
+    "organizationName": "Hochschule Karlsruhe",
+    "organizationLegalName": "Hochschule Karlsruhe",
+    "registrationNumber": "Ust.Id-Nr.: DE 143589180",
+    "termsAndConditionsLink": "http://example.com",
+    "legalAddress": {
+      "countryCode": "DE",
+      "postalCode": "76133",
+      "addressCode": "DE-KAE",
+      "city": "Karlsruhe",
+      "street": "Moltkestraße 30"
+    }
+  },
+  {
+    "id": "http://40",
+    "merlotId": "40",
+    "organizationName": "imc AG",
+    "organizationLegalName": "imc information multimedia communication AG",
+    "registrationNumber": "812 187 208",
+    "termsAndConditionsLink": "http://example.com",
+    "legalAddress": {
+      "countryCode": "DE",
+      "postalCode": "66123",
+      "addressCode": "DE-SB",
+      "city": "Saarbrücken",
+      "street": "Scheer Tower, Uni-Campus Nord"
+    }
+  },
+  {
+    "id": "http://50",
+    "merlotId": "50",
+    "organizationName": "Schülerkarriere",
+    "organizationLegalName": "Schülerkarriere GmbH",
+    "registrationNumber": "DE 282647776",
+    "termsAndConditionsLink": "http://example.com",
+    "legalAddress": {
+      "countryCode": "DE",
+      "postalCode": "30171",
+      "addressCode": "DE-HA",
+      "city": "Hannover",
+      "street": "Siebstr. 1"
+    }
+  }
+]
