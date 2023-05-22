@@ -73,5 +73,20 @@
       "city": "Hannover",
       "street": "Siebstr. 1"
     }
+  },
+    {
+    "id": "Participant:60",
+    "merlotId": "60",
+    "organizationName": "ChemPoint",
+    "organizationLegalName": "ChemPoint AG",
+    "registrationNumber": "lei Code 706346CHEMP24O5INT27",
+    "termsAndConditionsLink": "http://example.com",
+    "legalAddress": {
+      "countryCode": "DE",
+      "postalCode": "76133",
+      "addressCode": "DE-KAE",
+      "city": "Karlsruhe",
+      "street": "Ammoniakstrasse 3-5"
+    }
   }
 ]
