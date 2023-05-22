@@ -1,6 +1,6 @@
 [
   {
-    "id": "http://10",
+    "id": "Participant:10",
     "merlotId": "10",
     "organizationName": "Gaia-X AISBL",
     "organizationLegalName": "Gaia-X European Association for Data and Cloud AISBL",
@@ -15,7 +15,7 @@
     }
   },
   {
-    "id": "http://20",
+    "id": "Participant:20",
     "merlotId": "20",
     "organizationName": "Dataport",
     "organizationLegalName": "Dataport AöR",
@@ -30,7 +30,7 @@
     }
   },
   {
-    "id": "http://30",
+    "id": "Participant:30",
     "merlotId": "30",
     "organizationName": "Hochschule Karlsruhe",
     "organizationLegalName": "Hochschule Karlsruhe",
@@ -45,7 +45,7 @@
     }
   },
   {
-    "id": "http://40",
+    "id": "Participant:40",
     "merlotId": "40",
     "organizationName": "imc AG",
     "organizationLegalName": "imc information multimedia communication AG",
@@ -60,7 +60,7 @@
     }
   },
   {
-    "id": "http://50",
+    "id": "Participant:50",
     "merlotId": "50",
     "organizationName": "Schülerkarriere",
     "organizationLegalName": "Schülerkarriere GmbH",
