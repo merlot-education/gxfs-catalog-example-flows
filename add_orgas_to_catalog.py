@@ -90,6 +90,18 @@ for sd in d:
         "merlot:addressCode": {
             "@value": sd["legalAddress"]["addressCode"],
             "@type": "xsd:string"
+        },
+        "merlot:connectorId": {
+            "@value": sd["connectorId"],
+            "@type": "xsd:string"
+        },
+        "merlot:connectorPublicKey": {
+            "@value": sd["connectorPublicKey"],
+            "@type": "xsd:string"
+        },
+        "merlot:connectorBaseUrl": {
+            "@value": sd["connectorBaseUrl"],
+            "@type": "xsd:string"
         }
     }
 

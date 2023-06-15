@@ -6,6 +6,9 @@
     "organizationLegalName": "Gaia-X European Association for Data and Cloud AISBL",
     "registrationNumber": "0762747721",
     "termsAndConditionsLink": "http://example.com",
+    "connectorId": "connector10",
+    "connectorPublicKey": "key10",
+    "connectorBaseUrl": "example.com/connector",
     "legalAddress": {
       "countryCode": "BE",
       "postalCode": "1210",
@@ -21,6 +24,9 @@
     "organizationLegalName": "Dataport AöR",
     "registrationNumber": "",
     "termsAndConditionsLink": "http://example.com",
+    "connectorId": "connector20",
+    "connectorPublicKey": "key20",
+    "connectorBaseUrl": "example.com/connector",
     "legalAddress": {
       "countryCode": "D",
       "postalCode": "24161",
@@ -36,6 +42,9 @@
     "organizationLegalName": "Hochschule Karlsruhe",
     "registrationNumber": "Ust.Id-Nr.: DE 143589180",
     "termsAndConditionsLink": "http://example.com",
+    "connectorId": "connector30",
+    "connectorPublicKey": "key30",
+    "connectorBaseUrl": "example.com/connector",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "76133",
@@ -51,6 +60,9 @@
     "organizationLegalName": "imc information multimedia communication AG",
     "registrationNumber": "812 187 208",
     "termsAndConditionsLink": "http://example.com",
+    "connectorId": "connector40",
+    "connectorPublicKey": "key40",
+    "connectorBaseUrl": "example.com/connector",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "66123",
@@ -66,6 +78,9 @@
     "organizationLegalName": "Schülerkarriere GmbH",
     "registrationNumber": "DE 282647776",
     "termsAndConditionsLink": "http://example.com",
+    "connectorId": "connector50",
+    "connectorPublicKey": "key50",
+    "connectorBaseUrl": "example.com/connector",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "30171",
@@ -74,13 +89,16 @@
       "street": "Siebstr. 1"
     }
   },
-    {
+  {
     "id": "Participant:60",
     "merlotId": "60",
     "organizationName": "ChemPoint",
     "organizationLegalName": "ChemPoint AG",
     "registrationNumber": "lei Code 706346CHEMP24O5INT27",
     "termsAndConditionsLink": "http://example.com",
+    "connectorId": "connector60",
+    "connectorPublicKey": "key60",
+    "connectorBaseUrl": "example.com/connector",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "76133",

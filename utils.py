@@ -3,7 +3,7 @@ import json
 import requests
 
 def checkResponse(response, valid_response_code=200):
-    ic(response.status_code)
+    #ic(response.status_code)
     if response.status_code != valid_response_code:
         ic(json.loads(response.text))
         exit()
