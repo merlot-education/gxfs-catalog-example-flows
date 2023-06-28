@@ -1,5 +1,23 @@
 [
   {
+    "id": "Participant:00",
+    "merlotId": "00",
+    "organizationName": "Capgemini",
+    "organizationLegalName": "Capgemini Deutschland GmbH",
+    "registrationNumber": "0110",
+    "termsAndConditionsLink": "https://www.capgemini.com/",
+    "connectorId": "connector",
+    "connectorPublicKey": "key00",
+    "connectorBaseUrl": "http://localhost",
+    "legalAddress": {
+      "countryCode": "DE",
+      "postalCode": "12345",
+      "addressCode": "DE-BER",
+      "city": "Berlin",
+      "street": "Potsdamer Platz 5"
+    }
+  },
+  {
     "id": "Participant:10",
     "merlotId": "10",
     "organizationName": "Gaia-X AISBL",
@@ -23,7 +41,7 @@
     "organizationName": "Dataport",
     "organizationLegalName": "Dataport AöR",
     "registrationNumber": "",
-    "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsLink": "https://www.dataport.de/",
     "connectorId": "connector",
     "connectorPublicKey": "key20",
     "connectorBaseUrl": "http://localhost",

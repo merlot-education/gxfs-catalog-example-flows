@@ -9,10 +9,10 @@ from utils import get_access_token, checkResponse
 from config import oauth_user,oauth_pass, oauth_url, oauth_client_secret, catalog_api_base
 
 with open('orgas.json') as f:
-    d = json.load(f)
+    organisations = json.load(f)
 
-for sd in d:
-    ic(sd)
+for org in organisations:
+    ic(org)
     participant_data = {
         "@context": {
             "gax-trust-framework": "http://w3id.org/gaia-x/gax-trust-framework#",
@@ -24,88 +24,88 @@ for sd in d:
             "vcard": "http://www.w3.org/2006/vcard/ns#",
             "xsd": "http://www.w3.org/2001/XMLSchema#"
         },
-        "@id": sd["id"],
+        "@id": org["id"],
         "@type": "merlot:MerlotOrganization",
         "gax-trust-framework:headquarterAddress": {
             "vcard:country-name": {
-                "@value": sd["legalAddress"]["countryCode"],
+                "@value": org["legalAddress"]["countryCode"],
                 "@type": "xsd:string"
             },
             "vcard:postal-code": {
-                "@value": sd["legalAddress"]["postalCode"],
+                "@value": org["legalAddress"]["postalCode"],
                 "@type": "xsd:string"
             },
             "vcard:street-address": {
-                "@value": sd["legalAddress"]["street"],
+                "@value": org["legalAddress"]["street"],
                 "@type": "xsd:string"
             },
             "vcard:locality": {
                 "@type": "xsd:string",
-                "@value": sd["legalAddress"]["city"]
+                "@value": org["legalAddress"]["city"]
             },
             "@type": "vcard:Address"
         },
         "gax-trust-framework:legalAddress": {
             "vcard:country-name": {
-                "@value": sd["legalAddress"]["countryCode"],
+                "@value": org["legalAddress"]["countryCode"],
                 "@type": "xsd:string"
             },
             "vcard:postal-code": {
-                "@value": sd["legalAddress"]["postalCode"],
+                "@value": org["legalAddress"]["postalCode"],
                 "@type": "xsd:string"
             },
             "vcard:street-address": {
-                "@value": sd["legalAddress"]["street"],
+                "@value": org["legalAddress"]["street"],
                 "@type": "xsd:string"
             },
             "vcard:locality": {
                 "@type": "xsd:string",
-                "@value": sd["legalAddress"]["city"]
+                "@value": org["legalAddress"]["city"]
             },
             "@type": "vcard:Address"
         },
         "gax-trust-framework:registrationNumber": {
             "gax-trust-framework:local": {
-                "@value": sd["registrationNumber"],
+                "@value": org["registrationNumber"],
                 "@type": "xsd:string"
             },
             "@type": "gax-trust-framework:RegistrationNumber"
         },
         "gax-trust-framework:legalName": {
-            "@value": sd["organizationLegalName"],
+            "@value": org["organizationLegalName"],
             "@type": "xsd:string"
         },
         "merlot:termsConditionsLink": {
-            "@value": sd["termsAndConditionsLink"],
+            "@value": org["termsAndConditionsLink"],
             "@type": "xsd:string"
         },
         "merlot:orgaName": {
-            "@value": sd["organizationName"],
+            "@value": org["organizationName"],
             "@type": "xsd:string"
         },
         "merlot:merlotId": {
-            "@value": sd["merlotId"],
+            "@value": org["merlotId"],
             "@type": "xsd:string"
         },
         "merlot:addressCode": {
-            "@value": sd["legalAddress"]["addressCode"],
+            "@value": org["legalAddress"]["addressCode"],
             "@type": "xsd:string"
         },
         "merlot:connectorId": {
-            "@value": sd["connectorId"],
+            "@value": org["connectorId"],
             "@type": "xsd:string"
         },
         "merlot:connectorPublicKey": {
-            "@value": sd["connectorPublicKey"],
+            "@value": org["connectorPublicKey"],
             "@type": "xsd:string"
         },
         "merlot:connectorBaseUrl": {
-            "@value": sd["connectorBaseUrl"],
+            "@value": org["connectorBaseUrl"],
             "@type": "xsd:string"
         }
     }
 
-    issuer = sd["id"]
+    issuer = org["id"]
 
     presentation = {
         "@context": ["https://www.w3.org/2018/credentials/v1"],
@@ -146,5 +146,5 @@ for sd in d:
     ic("Sending signed vp to catalog API")
     response = requests.post(catalog_api_base + "/participants", headers={'Authorization': 'Bearer ' + access_token,
                                                                           "Content-Type": "application/json"},
-                             data=json.dumps(d))
+                            data=json.dumps(d))
     checkResponse(response, valid_response_code=201)
