@@ -6,9 +6,6 @@
     "organizationLegalName": "Capgemini Deutschland GmbH",
     "registrationNumber": "0110",
     "termsAndConditionsLink": "https://www.capgemini.com/",
-    "connectorId": "connector",
-    "connectorPublicKey": "key00",
-    "connectorBaseUrl": "http://localhost",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "12345",
@@ -24,9 +21,6 @@
     "organizationLegalName": "Gaia-X European Association for Data and Cloud AISBL",
     "registrationNumber": "0762747721",
     "termsAndConditionsLink": "http://example.com",
-    "connectorId": "connector",
-    "connectorPublicKey": "key10",
-    "connectorBaseUrl": "http://localhost",
     "legalAddress": {
       "countryCode": "BE",
       "postalCode": "1210",
@@ -42,9 +36,6 @@
     "organizationLegalName": "Dataport AöR",
     "registrationNumber": "",
     "termsAndConditionsLink": "https://www.dataport.de/",
-    "connectorId": "connector",
-    "connectorPublicKey": "key20",
-    "connectorBaseUrl": "http://localhost",
     "legalAddress": {
       "countryCode": "D",
       "postalCode": "24161",
@@ -60,9 +51,6 @@
     "organizationLegalName": "Hochschule Karlsruhe",
     "registrationNumber": "Ust.Id-Nr.: DE 143589180",
     "termsAndConditionsLink": "http://example.com",
-    "connectorId": "connector",
-    "connectorPublicKey": "key30",
-    "connectorBaseUrl": "http://localhost",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "76133",
@@ -78,9 +66,6 @@
     "organizationLegalName": "imc information multimedia communication AG",
     "registrationNumber": "812 187 208",
     "termsAndConditionsLink": "http://example.com",
-    "connectorId": "connector",
-    "connectorPublicKey": "key40",
-    "connectorBaseUrl": "http://localhost",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "66123",
@@ -96,9 +81,6 @@
     "organizationLegalName": "Schülerkarriere GmbH",
     "registrationNumber": "DE 282647776",
     "termsAndConditionsLink": "http://example.com",
-    "connectorId": "connector",
-    "connectorPublicKey": "key50",
-    "connectorBaseUrl": "http://localhost",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "30171",
@@ -114,9 +96,6 @@
     "organizationLegalName": "ChemPoint AG",
     "registrationNumber": "lei Code 706346CHEMP24O5INT27",
     "termsAndConditionsLink": "http://example.com",
-    "connectorId": "connector",
-    "connectorPublicKey": "key60",
-    "connectorBaseUrl": "http://localhost",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "76133",

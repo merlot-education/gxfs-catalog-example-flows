@@ -90,18 +90,6 @@ for org in organisations:
         "merlot:addressCode": {
             "@value": org["legalAddress"]["addressCode"],
             "@type": "xsd:string"
-        },
-        "merlot:connectorId": {
-            "@value": org["connectorId"],
-            "@type": "xsd:string"
-        },
-        "merlot:connectorPublicKey": {
-            "@value": org["connectorPublicKey"],
-            "@type": "xsd:string"
-        },
-        "merlot:connectorBaseUrl": {
-            "@value": org["connectorBaseUrl"],
-            "@type": "xsd:string"
         }
     }
 

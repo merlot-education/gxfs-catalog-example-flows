@@ -6,8 +6,8 @@ import json
 
 from config import oauth_user,oauth_pass, oauth_url, oauth_client_secret, catalog_api_base
 
-ontology_base_folder = "/home/sebastian/Downloads/yaml2/yaml2ontology/"
-merged_shapes_path = "/home/sebastian/Downloads/yaml2/yaml2shacl/mergedShapes.ttl"
+ontology_base_folder = "/home/mbuskies/workspace/gxfs/service-characteristics/yaml2ontology/"
+merged_shapes_path = "/home/mbuskies/workspace/gxfs/service-characteristics/yaml2shacl/mergedShapes.ttl"
 
 # retrieve oauth2 access token
 ic("Retrieving access token from oauth2 server")
