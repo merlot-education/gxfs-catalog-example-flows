@@ -103,5 +103,20 @@
       "city": "Karlsruhe",
       "street": "Ammoniakstrasse 3-5"
     }
+  },
+  {
+    "id": "Participant:70",
+    "merlotId": "70",
+    "organizationName": "Testorg",
+    "organizationLegalName": "Testorg AG",
+    "registrationNumber": "",
+    "termsAndConditionsLink": "http://example.com",
+    "legalAddress": {
+      "countryCode": "DE",
+      "postalCode": "30171",
+      "addressCode": "DE-HA",
+      "city": "Hannover",
+      "street": "Siebstr. 2"
+    }
   }
 ]
