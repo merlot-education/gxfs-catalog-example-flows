@@ -5,7 +5,9 @@
     "organizationName": "Capgemini",
     "organizationLegalName": "Capgemini Deutschland GmbH",
     "registrationNumber": "0110",
+    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "https://www.capgemini.com/",
+    "termsAndConditionsHash": "hash1234",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "12345",
@@ -20,7 +22,9 @@
     "organizationName": "Gaia-X AISBL",
     "organizationLegalName": "Gaia-X European Association for Data and Cloud AISBL",
     "registrationNumber": "0762747721",
+    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
     "legalAddress": {
       "countryCode": "BE",
       "postalCode": "1210",
@@ -35,7 +39,9 @@
     "organizationName": "Dataport",
     "organizationLegalName": "Dataport AöR",
     "registrationNumber": "",
+    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "https://www.dataport.de/",
+    "termsAndConditionsHash": "hash1234",
     "legalAddress": {
       "countryCode": "D",
       "postalCode": "24161",
@@ -50,7 +56,9 @@
     "organizationName": "Hochschule Karlsruhe",
     "organizationLegalName": "Hochschule Karlsruhe",
     "registrationNumber": "Ust.Id-Nr.: DE 143589180",
+    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "76133",
@@ -65,7 +73,9 @@
     "organizationName": "imc AG",
     "organizationLegalName": "imc information multimedia communication AG",
     "registrationNumber": "812 187 208",
+    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "66123",
@@ -80,7 +90,9 @@
     "organizationName": "Schülerkarriere",
     "organizationLegalName": "Schülerkarriere GmbH",
     "registrationNumber": "DE 282647776",
+    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "30171",
@@ -95,7 +107,9 @@
     "organizationName": "ChemPoint",
     "organizationLegalName": "ChemPoint AG",
     "registrationNumber": "lei Code 706346CHEMP24O5INT27",
+    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "76133",
@@ -110,13 +124,100 @@
     "organizationName": "Testorg",
     "organizationLegalName": "Testorg AG",
     "registrationNumber": "",
+    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "30171",
       "addressCode": "DE-HA",
       "city": "Hannover",
       "street": "Siebstr. 2"
+    }
+  },
+  {
+    "id": "Participant:80",
+    "merlotId": "80",
+    "organizationName": "AWSi",
+    "organizationLegalName": "August-Wilhelm Scheer Institut für digitale Produkte und Prozesse gGmbH",
+    "registrationNumber": "DE294310231",
+    "mailAddress": "mymail@example.com",
+    "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
+    "legalAddress": {
+      "countryCode": "DE",
+      "postalCode": "66123",
+      "addressCode": "DE-SB",
+      "city": "Saarbrücken",
+      "street": "Uni Campus Nord D5 1"
+    }
+  },
+  {
+    "id": "Participant:90",
+    "merlotId": "90",
+    "organizationName": "HPI",
+    "organizationLegalName": "Hasso-Plattner-Institut für Digital Engineering gGmbH",
+    "registrationNumber": "DE812987194",
+    "mailAddress": "mymail@example.com",
+    "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
+    "legalAddress": {
+      "countryCode": "DE",
+      "postalCode": "14482",
+      "addressCode": "DE-P",
+      "city": "Potsdam",
+      "street": "Prof.-Dr.-Helmert-Str. 2-3"
+    }
+  },
+  {
+    "id": "Participant:11",
+    "merlotId": "11",
+    "organizationName": "MIT",
+    "organizationLegalName": "M.I.T e-Solutions GmbH",
+    "registrationNumber": "DE266627775",
+    "mailAddress": "mymail@example.com",
+    "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
+    "legalAddress": {
+      "countryCode": "DE",
+      "postalCode": "61381",
+      "addressCode": "DE-FD",
+      "city": "Friedrichsdorf",
+      "street": "Am Houiller Platz 4c"
+    }
+  },
+  {
+    "id": "Participant:12",
+    "merlotId": "12",
+    "organizationName": "Schule (School MS)",
+    "organizationLegalName": "Schule (School MS)",
+    "registrationNumber": "",
+    "mailAddress": "mymail@example.com",
+    "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
+    "legalAddress": {
+      "countryCode": "DE",
+      "postalCode": "66111",
+      "addressCode": "DE-SB",
+      "city": "Saarbrücken",
+      "street": "Bahnhofstraße 1-3"
+    }
+  },
+  {
+    "id": "Participant:13",
+    "merlotId": "13",
+    "organizationName": "Schule (LMS)",
+    "organizationLegalName": "Schule (LMS)",
+    "registrationNumber": "",
+    "mailAddress": "mymail@example.com",
+    "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
+    "legalAddress": {
+      "countryCode": "DE",
+      "postalCode": "66111",
+      "addressCode": "DE-SB",
+      "city": "Saarbrücken",
+      "street": "Landwehrplatz 10"
     }
   }
 ]

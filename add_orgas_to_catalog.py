@@ -75,8 +75,23 @@ for org in organisations:
             "@value": org["organizationLegalName"],
             "@type": "xsd:string"
         },
-        "merlot:termsConditionsLink": {
-            "@value": org["termsAndConditionsLink"],
+        "gax-trust-framework:termsAndConditions": {
+            "@type": "gax-trust-framework:TermsAndConditions",
+            "gax-trust-framework:content": {
+                "@type": "xsd:anyURI",
+                "@value": org["termsAndConditionsLink"]
+            },
+            "gax-trust-framework:hash": {
+                "@type": "xsd:string",
+                "@value": org["termsAndConditionsHash"]
+            }
+        },
+        "merlot:addressCode": {
+            "@type": "xsd:string",
+            "@value": org["legalAddress"]["addressCode"]
+        },
+        "merlot:mailAddress": {
+            "@value": org["mailAddress"],
             "@type": "xsd:string"
         },
         "merlot:orgaName": {
@@ -85,10 +100,6 @@ for org in organisations:
         },
         "merlot:merlotId": {
             "@value": org["merlotId"],
-            "@type": "xsd:string"
-        },
-        "merlot:addressCode": {
-            "@value": org["legalAddress"]["addressCode"],
             "@type": "xsd:string"
         }
     }
