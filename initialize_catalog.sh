@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+pip3 install -r requirements.txt
+
 python3 ~/workspace/mpo/catalog-shapes/merge_shapes.py
 
 if ! [ -f "./gxfsTest-0.1.0-jar-with-dependencies.jar" ]; then
