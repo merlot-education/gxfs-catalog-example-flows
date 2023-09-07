@@ -75,7 +75,7 @@ for org in organisations:
             "@value": org["organizationLegalName"],
             "@type": "xsd:string"
         },
-        "gax-trust-framework:termsAndConditions": {
+        "merlot:termsAndConditions": {
             "@type": "gax-trust-framework:TermsAndConditions",
             "gax-trust-framework:content": {
                 "@type": "xsd:anyURI",

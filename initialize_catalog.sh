@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+python3 ~/workspace/mpo/catalog-shapes/merge_shapes.py
+
 if ! [ -f "./gxfsTest-0.1.0-jar-with-dependencies.jar" ]; then
     git clone https://gitlab.com/gaia-x/data-infrastructure-federation-services/cat/fc-tools/signer
     cd signer

@@ -6,8 +6,8 @@ import json
 
 from config import oauth_user,oauth_pass, oauth_url, oauth_client_secret, catalog_api_base
 
-ontology_base_folder = os.path.expanduser("~/workspace/gxfs/service-characteristics/shacl/ontology/")
-merged_shapes_path = os.path.expanduser("~/workspace/gxfs/service-characteristics/shacl/shapes/mergedShapes.ttl")
+ontology_base_folder = os.path.expanduser("~/workspace/mpo/catalog-shapes/shacl/ontology/")
+merged_shapes_path = os.path.expanduser("~/workspace/mpo/catalog-shapes/shacl/shapes/mergedShapes.ttl")
 
 # retrieve oauth2 access token
 ic("Retrieving access token from oauth2 server")
