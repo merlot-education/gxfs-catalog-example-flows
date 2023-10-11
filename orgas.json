@@ -1,5 +1,22 @@
 [
   {
+    "id": "Participant:99",
+    "merlotId": "99",
+    "organizationName": "MERLOT Federation",
+    "organizationLegalName": "MERLOT Federation",
+    "registrationNumber": "-",
+    "mailAddress": "mymail@example.com",
+    "termsAndConditionsLink": "https://www.merlot-education.eu/",
+    "termsAndConditionsHash": "hash1234",
+    "legalAddress": {
+      "countryCode": "-",
+      "postalCode": "-",
+      "addressCode": "-",
+      "city": "-",
+      "street": "-"
+    }
+  },
+  {
     "id": "Participant:00",
     "merlotId": "00",
     "organizationName": "Capgemini",
