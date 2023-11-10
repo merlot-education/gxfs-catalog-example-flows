@@ -236,5 +236,39 @@
       "city": "Saarbrücken",
       "street": "Landwehrplatz 10"
     }
+  },
+  {
+    "id": "Participant:14",
+    "merlotId": "14",
+    "organizationName": "HeadAI",
+    "organizationLegalName": "HeadAI Oy",
+    "registrationNumber": "2693292-2",
+    "mailAddress": "mymail@example.com",
+    "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
+    "legalAddress": {
+      "countryCode": "FI",
+      "postalCode": "28130",
+      "addressCode": "FI",
+      "city": "Pori",
+      "street": "Rautatienpuistokatu 7"
+    }
+  },
+  {
+    "id": "Participant:15",
+    "merlotId": "15",
+    "organizationName": "Lightcast",
+    "organizationLegalName": "Lightcast",
+    "registrationNumber": "",
+    "mailAddress": "mymail@example.com",
+    "termsAndConditionsLink": "http://example.com",
+    "termsAndConditionsHash": "hash1234",
+    "legalAddress": {
+      "countryCode": "UK",
+      "postalCode": "RG24 9XH",
+      "addressCode": "UK",
+      "city": "Basingstoke",
+      "street": "10 Sarum Hill"
+    }
   }
 ]
