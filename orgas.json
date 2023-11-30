@@ -11,7 +11,6 @@
     "legalAddress": {
       "countryCode": "-",
       "postalCode": "-",
-      "addressCode": "-",
       "city": "-",
       "street": "-"
     }
@@ -28,7 +27,6 @@
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "12345",
-      "addressCode": "DE-BER",
       "city": "Berlin",
       "street": "Potsdamer Platz 5"
     }
@@ -45,7 +43,6 @@
     "legalAddress": {
       "countryCode": "BE",
       "postalCode": "1210",
-      "addressCode": "BE-BRU",
       "city": "Brüssel",
       "street": "Avenue des Arts 6-9"
     }
@@ -62,7 +59,6 @@
     "legalAddress": {
       "countryCode": "D",
       "postalCode": "24161",
-      "addressCode": "",
       "city": "Altenholz",
       "street": "Altenholzer Straße 10–14"
     }
@@ -79,7 +75,6 @@
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "76133",
-      "addressCode": "DE-KAE",
       "city": "Karlsruhe",
       "street": "Moltkestraße 30"
     }
@@ -96,7 +91,6 @@
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "66123",
-      "addressCode": "DE-SB",
       "city": "Saarbrücken",
       "street": "Scheer Tower, Uni-Campus Nord"
     }
@@ -113,7 +107,6 @@
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "30171",
-      "addressCode": "DE-HA",
       "city": "Hannover",
       "street": "Siebstr. 1"
     }
@@ -130,7 +123,6 @@
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "76133",
-      "addressCode": "DE-KAE",
       "city": "Karlsruhe",
       "street": "Ammoniakstrasse 3-5"
     }
@@ -147,7 +139,6 @@
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "30171",
-      "addressCode": "DE-HA",
       "city": "Hannover",
       "street": "Siebstr. 2"
     }
@@ -164,7 +155,6 @@
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "66123",
-      "addressCode": "DE-SB",
       "city": "Saarbrücken",
       "street": "Uni Campus Nord D5 1"
     }
@@ -181,7 +171,6 @@
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "14482",
-      "addressCode": "DE-P",
       "city": "Potsdam",
       "street": "Prof.-Dr.-Helmert-Str. 2-3"
     }
@@ -198,7 +187,6 @@
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "61381",
-      "addressCode": "DE-FD",
       "city": "Friedrichsdorf",
       "street": "Am Houiller Platz 4c"
     }
@@ -215,7 +203,6 @@
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "66111",
-      "addressCode": "DE-SB",
       "city": "Saarbrücken",
       "street": "Bahnhofstraße 1-3"
     }
@@ -232,7 +219,6 @@
     "legalAddress": {
       "countryCode": "DE",
       "postalCode": "66111",
-      "addressCode": "DE-SB",
       "city": "Saarbrücken",
       "street": "Landwehrplatz 10"
     }
@@ -249,7 +235,6 @@
     "legalAddress": {
       "countryCode": "FI",
       "postalCode": "28130",
-      "addressCode": "FI",
       "city": "Pori",
       "street": "Rautatienpuistokatu 7"
     }
@@ -266,7 +251,6 @@
     "legalAddress": {
       "countryCode": "UK",
       "postalCode": "RG24 9XH",
-      "addressCode": "UK",
       "city": "Basingstoke",
       "street": "10 Sarum Hill"
     }

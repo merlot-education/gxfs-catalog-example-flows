@@ -86,10 +86,6 @@ for org in organisations:
                 "@value": org["termsAndConditionsHash"]
             }
         },
-        "merlot:addressCode": {
-            "@type": "xsd:string",
-            "@value": org["legalAddress"]["addressCode"]
-        },
         "merlot:mailAddress": {
             "@value": org["mailAddress"],
             "@type": "xsd:string"
