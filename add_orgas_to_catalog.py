@@ -121,7 +121,7 @@ for org in organisations:
         json.dump(presentation, f, ensure_ascii=False, indent=4, sort_keys=True)
 
     ic("Calling signer to sign unsigned vp")
-    os.system("java -jar gxfsTest-0.1.0-jar-with-dependencies.jar vp.json vp.signed.json")
+    os.system("java -jar gxfsTest-0.1.0-jar-with-dependencies.jar vp.json vp.signed.json ~/workspace/mpo/merlot-cert/prk.ss.pem ~/workspace/mpo/merlot-cert/cert.ss.pem")
 
     ic("Load signed vp from file")
     d = None
