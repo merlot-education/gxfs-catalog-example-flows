@@ -3,7 +3,7 @@ import os
 
 import requests
 from icecream import ic
-
+from datetime import datetime
 from utils import get_access_token, checkResponse
 
 from config import oauth_user,oauth_pass, oauth_url, oauth_client_secret, catalog_api_base
@@ -111,7 +111,7 @@ for org in organisations:
             "@id": "https://www.example.org/legalPerson.json",
             "@type": ["VerifiableCredential"],
             "issuer": issuer,
-            "issuanceDate": "2022-10-19T18:48:09Z",
+            "issuanceDate": (datetime.utcnow()).isoformat() + 'Z',
             "credentialSubject": participant_data
         }
     }
