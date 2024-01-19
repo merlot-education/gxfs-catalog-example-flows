@@ -3,7 +3,7 @@ import os
 
 import requests
 from icecream import ic
-
+from datetime import datetime
 from utils import get_access_token, checkResponse
 
 from config import oauth_user,oauth_pass, oauth_url, oauth_client_secret, catalog_api_base
@@ -111,7 +111,7 @@ for org in organisations:
             "@id": "https://www.example.org/legalPerson.json",
             "@type": ["VerifiableCredential"],
             "issuer": issuer,
-            "issuanceDate": "2022-10-19T18:48:09Z",
+            "issuanceDate": (datetime.utcnow()).isoformat() + 'Z',
             "credentialSubject": participant_data
         }
     }
@@ -121,7 +121,7 @@ for org in organisations:
         json.dump(presentation, f, ensure_ascii=False, indent=4, sort_keys=True)
 
     ic("Calling signer to sign unsigned vp")
-    os.system("java -jar gxfsTest-0.1.0-jar-with-dependencies.jar vp.json vp.signed.json")
+    os.system("java -jar gxfsTest-0.1.0-jar-with-dependencies.jar vp.json vp.signed.json ~/workspace/mpo/merlot-cert/prk.ss.pem ~/workspace/mpo/merlot-cert/cert.ss.pem")
 
     ic("Load signed vp from file")
     d = None

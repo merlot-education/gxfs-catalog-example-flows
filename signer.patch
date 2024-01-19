@@ -1,5 +1,5 @@
 diff --git a/src/main/java/org/example/Main.java b/src/main/java/org/example/Main.java
-index 3f4c5ac..2388f48 100644
+index 3f4c5ac..cea12d5 100644
 --- a/src/main/java/org/example/Main.java
 +++ b/src/main/java/org/example/Main.java
 @@ -36,10 +36,10 @@ import java.util.List;
@@ -10,10 +10,37 @@ index 3f4c5ac..2388f48 100644
 -    private static final String PATH_TO_PUBLIC_KEY = "src/main/resources/cert.ss.pem";
 -    private static String PATH_TO_SELF_DESCRIPTION = "src/main/resources/vc.json";
 -    private static String PATH_TO_SIGNED_SELF_DESCRIPTION = "src/main/resources/sd.signed.json";
-+    private static final String PATH_TO_PRIVATE_KEY = "prk.ss.pem";
-+    private static final String PATH_TO_PUBLIC_KEY = "cert.ss.pem";
++    private static String PATH_TO_PRIVATE_KEY = "prk.ss.pem";
++    private static String PATH_TO_PUBLIC_KEY = "cert.ss.pem";
 +    private static String PATH_TO_SELF_DESCRIPTION = "vc.json";
 +    private static String PATH_TO_SIGNED_SELF_DESCRIPTION = "sd.signed.json";
  
      static String readFile (String path) throws IOException {
          return Files.readString(Path.of(path));
+@@ -51,9 +51,15 @@ public class Main {
+         System.out.println("args: " + java.util.Arrays.toString(args));
+         if (args.length > 0) {
+           PATH_TO_SELF_DESCRIPTION = args[0];
+-          if (args.length > 1) {
++        }
++        if (args.length > 1) {
+             PATH_TO_SIGNED_SELF_DESCRIPTION = args[1];
+-          }
++        }
++        if (args.length > 2) {
++            PATH_TO_PRIVATE_KEY = args[2];
++        }
++        if (args.length > 3) {
++            PATH_TO_PUBLIC_KEY = args[3];
+         }
+ 
+         VerifiablePresentation vp = VerifiablePresentation.fromJson(readFile(PATH_TO_SELF_DESCRIPTION));
+@@ -96,7 +102,7 @@ public class Main {
+ 
+         signer.setCreated(new Date());
+         signer.setProofPurpose(LDSecurityKeywords.JSONLD_TERM_ASSERTIONMETHOD);
+-        signer.setVerificationMethod(URI.create("did:web:compliance.lab.gaia-x.eu"));
++        signer.setVerificationMethod(URI.create("did:web:merlot-education.eu"));
+ 
+         LdProof ldProof = signer.sign(credential);
+ 
