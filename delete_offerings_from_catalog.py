@@ -26,9 +26,9 @@ checkResponse(response, valid_response_code=200)
 ic(response.text)
 
 for p in json.loads(response.text)["items"]:
-    if p["meta"]["id"].startswith("ServiceOffering"):
-        ic("Deleting offering", p["meta"]["id"])
-        response = requests.delete(catalog_api_base + "/self-descriptions/" + p["meta"]["sdHash"]
-                                   , headers={'Authorization': 'Bearer ' + access_token,
-                                              "Content-Type": "application/json"})
-        checkResponse(response, valid_response_code=200)
+    #if p["meta"]["id"].startswith("ServiceOffering"):
+    ic("Deleting offering", p["meta"]["id"])
+    response = requests.delete(catalog_api_base + "/self-descriptions/" + p["meta"]["sdHash"]
+                                , headers={'Authorization': 'Bearer ' + access_token,
+                                            "Content-Type": "application/json"})
+    checkResponse(response, valid_response_code=200)

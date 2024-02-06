@@ -3,7 +3,7 @@ set -e
 
 pip3 install -r requirements.txt
 
-python3 ~/workspace/mpo/catalog-shapes/merge_shapes.py
+python3 ~/workspace/mpo/catalog-shapes/catalog-shapes/merge_shapes.py
 
 if ! [ -f "./gxfsTest-0.1.0-jar-with-dependencies.jar" ]; then
     git clone https://gitlab.com/gaia-x/data-infrastructure-federation-services/cat/fc-tools/signer
@@ -16,6 +16,6 @@ if ! [ -f "./gxfsTest-0.1.0-jar-with-dependencies.jar" ]; then
 fi
 
 python3 delete_orgas_from_catalog.py
-# python3 delete_offerings_from_catalog.py
-python3 upload_schemas_to_catalog.py
-python3 add_orgas_to_catalog.py
+python3 delete_offerings_from_catalog.py
+#python3 upload_schemas_to_catalog.py
+#python3 add_orgas_to_catalog.py

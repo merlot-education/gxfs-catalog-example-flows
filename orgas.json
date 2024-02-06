@@ -1,11 +1,9 @@
 [
   {
     "id": "Participant:99",
-    "merlotId": "99",
     "organizationName": "MERLOT Federation",
     "organizationLegalName": "MERLOT Federation",
     "registrationNumber": "-",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "https://www.merlot-education.eu/",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -17,11 +15,9 @@
   },
   {
     "id": "Participant:00",
-    "merlotId": "00",
     "organizationName": "Capgemini",
     "organizationLegalName": "Capgemini Deutschland GmbH",
     "registrationNumber": "0110",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "https://www.capgemini.com/",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -33,11 +29,9 @@
   },
   {
     "id": "Participant:10",
-    "merlotId": "10",
     "organizationName": "Gaia-X AISBL",
     "organizationLegalName": "Gaia-X European Association for Data and Cloud AISBL",
     "registrationNumber": "0762747721",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -49,11 +43,9 @@
   },
   {
     "id": "Participant:20",
-    "merlotId": "20",
     "organizationName": "Dataport",
     "organizationLegalName": "Dataport AöR",
     "registrationNumber": "",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "https://www.dataport.de/",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -65,11 +57,9 @@
   },
   {
     "id": "Participant:30",
-    "merlotId": "30",
     "organizationName": "Hochschule Karlsruhe",
     "organizationLegalName": "Hochschule Karlsruhe",
     "registrationNumber": "Ust.Id-Nr.: DE 143589180",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -81,11 +71,9 @@
   },
   {
     "id": "Participant:40",
-    "merlotId": "40",
     "organizationName": "imc AG",
     "organizationLegalName": "imc information multimedia communication AG",
     "registrationNumber": "812 187 208",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -97,11 +85,9 @@
   },
   {
     "id": "Participant:50",
-    "merlotId": "50",
     "organizationName": "Schülerkarriere",
     "organizationLegalName": "Schülerkarriere GmbH",
     "registrationNumber": "DE 282647776",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -113,11 +99,9 @@
   },
   {
     "id": "Participant:60",
-    "merlotId": "60",
     "organizationName": "ChemPoint",
     "organizationLegalName": "ChemPoint AG",
     "registrationNumber": "lei Code 706346CHEMP24O5INT27",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -129,11 +113,9 @@
   },
   {
     "id": "Participant:70",
-    "merlotId": "70",
     "organizationName": "Testorg",
     "organizationLegalName": "Testorg AG",
     "registrationNumber": "",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -145,11 +127,9 @@
   },
   {
     "id": "Participant:80",
-    "merlotId": "80",
     "organizationName": "AWSi",
     "organizationLegalName": "August-Wilhelm Scheer Institut für digitale Produkte und Prozesse gGmbH",
     "registrationNumber": "DE294310231",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -161,11 +141,9 @@
   },
   {
     "id": "Participant:90",
-    "merlotId": "90",
     "organizationName": "HPI",
     "organizationLegalName": "Hasso-Plattner-Institut für Digital Engineering gGmbH",
     "registrationNumber": "DE812987194",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -177,11 +155,9 @@
   },
   {
     "id": "Participant:11",
-    "merlotId": "11",
     "organizationName": "MIT",
     "organizationLegalName": "M.I.T e-Solutions GmbH",
     "registrationNumber": "DE266627775",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -193,11 +169,9 @@
   },
   {
     "id": "Participant:12",
-    "merlotId": "12",
     "organizationName": "Schule (School MS)",
     "organizationLegalName": "Schule (School MS)",
     "registrationNumber": "",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -209,11 +183,9 @@
   },
   {
     "id": "Participant:13",
-    "merlotId": "13",
     "organizationName": "Schule (LMS)",
     "organizationLegalName": "Schule (LMS)",
     "registrationNumber": "",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -225,11 +197,9 @@
   },
   {
     "id": "Participant:14",
-    "merlotId": "14",
     "organizationName": "HeadAI",
     "organizationLegalName": "HeadAI Oy",
     "registrationNumber": "2693292-2",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
@@ -241,11 +211,9 @@
   },
   {
     "id": "Participant:15",
-    "merlotId": "15",
     "organizationName": "Lightcast",
     "organizationLegalName": "Lightcast",
     "registrationNumber": "",
-    "mailAddress": "mymail@example.com",
     "termsAndConditionsLink": "http://example.com",
     "termsAndConditionsHash": "hash1234",
     "legalAddress": {
