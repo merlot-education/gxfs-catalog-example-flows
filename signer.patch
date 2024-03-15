@@ -40,7 +40,7 @@ index 3f4c5ac..cea12d5 100644
          signer.setCreated(new Date());
          signer.setProofPurpose(LDSecurityKeywords.JSONLD_TERM_ASSERTIONMETHOD);
 -        signer.setVerificationMethod(URI.create("did:web:compliance.lab.gaia-x.eu"));
-+        signer.setVerificationMethod(URI.create("did:web:merlot-education.eu"));
++        signer.setVerificationMethod(URI.create("did:web:marketplace.dev.merlot-education.eu"));
  
          LdProof ldProof = signer.sign(credential);
  
